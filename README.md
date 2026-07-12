@@ -3,18 +3,7 @@ This repository provides an enterprise-ready infrastructure-as-code (IaC) layout
 
 Instead of treating vSphere as a dumb hypervisor, this architecture leverages the native Cloud Provider Interface (CPI) and Container Storage Interface (CSI) to transform vSphere into a fully native Kubernetes cloud provider, automating compute lifecycles, node topologies, and persistent storage allocation on shared SAN arrays (such as HPE MSA/VMFS backends).
 
-Repository Architecture
-Plaintext
-├── README.md
-└── manifests/
-    ├── cpi/
-    │   ├── vsphere-cpi-secret.yaml       # Sanitized credential mapping
-    │   ├── vsphere-cpi-config.yaml       # Global configmap & cloud-config
-    │   └── vsphere-cpi-daemonset.yaml    # Cloud controller manager specs
-    └── csi/
-        ├── vsphere-csi-secret.yaml       # CSI vCenter connection secrets
-        ├── vsphere-csi-driver.yaml       # Controller, Attacher, Resizer, Syncer & Node DS
-        └── storageclass-spbm.yaml        # StorageClass mapping to vSphere SPBM policies
+
 1. Multi-Cluster Architecture & RBAC Isolation
 Running multiple environments (e.g., Staging and Production) against a single vCenter instance requires strict cryptographic and namespace isolation to limit the failure blast radius.
 
